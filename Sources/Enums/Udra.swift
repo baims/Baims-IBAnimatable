@@ -46,7 +46,7 @@ class Udra { // swiftlint:disable:this type_body_length
     static let tokenStringList: [String: TokenBuilder] = [
       "[ \t\n]": { _, _ in nil }, // trim
       "[a-zA-Z][a-zA-Z0-9]*": ({ .identifier($0, $1) }),
-      "\\-?[0-9.]+": ({ .number(Double($0)!, $1) }),
+      "\\-?[0-9.]+": ({ .number(Double($0) ?? 0, $1) }),
       "\\(": ({ .parenthesisOpen($1) }),
       "\\)": ({ .parenthesisClose($1) }),
       "\\[": ({ .bracketOpen($1) }),
